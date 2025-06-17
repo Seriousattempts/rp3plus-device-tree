@@ -88,12 +88,13 @@ BOARD_MOORECHIP_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext vendor pr
 BOARD_MOORECHIP_DYNAMIC_PARTITIONS_SIZE := 9122611200 # TODO: Fix hardcoded value
 
 # Platform
-TARGET_BOARD_PLATFORM := ums5121h10
+TARGET_BOARD_PLATFORM := ums512
 
 # Recovery
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/system/etc/recovery.fstab
 
 # Verified Boot
 BOARD_AVB_ENABLE := true
@@ -105,7 +106,8 @@ VENDOR_SECURITY_PATCH := 2099-12-31
 PLATFORM_VERSION := 16.1.0
 
 # TWRP Configuration
-TW_THEME := portrait_hdpi
+TARGET_SCREEN_WIDTH := 1336
+TARGET_SCREEN_HEIGHT := 752
 TW_EXTRA_LANGUAGES := true
 TW_SCREEN_BLANK_ON_BOOT := true
 TW_INPUT_BLACKLIST := "hbtp_vm"
@@ -115,8 +117,17 @@ TW_INCLUDE_REPACKTOOLS := true
 # Display/Brightness Configuration
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 150
+TW_BRIGHTNESS_PATH := "/sys/devices/platform/backlight/backlight/sprd_backlight/brightness"
 
 # Encryption Support
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_USE_FSCRYPT_POLICY := 1
+
+#Metadata
+BOARD_USES_METADATA_PARTITION := true 
+
+# OrangeFox Specific Configurations
+FOX_TARGET_DEVICES := "ums512,ums5121h10,ums512_1h10"
+
+
